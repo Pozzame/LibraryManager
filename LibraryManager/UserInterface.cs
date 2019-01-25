@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryManager
 {
-    partial class UserInterface
+    class UserInterface
     {
         private Processor processor;
         const string MENU_MESSAGE = @"Inserisci:

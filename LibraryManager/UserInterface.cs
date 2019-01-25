@@ -4,8 +4,9 @@ using System.Text;
 
 namespace LibraryManager
 {
-    class UserInterface
+    partial class UserInterface
     {
+        private Processor processor;
         const string MENU_MESSAGE = @"Inserisci:
                                         \n'S' per mostrare tutti i libri;
                                         \n'M' per mostrare i libri di un dato autore;
@@ -14,6 +15,12 @@ namespace LibraryManager
                                         \n'R' per rimuovere un autore o un libro;
                                         \n'C' per mostrare i libri di una data categoria;
                                         \n'N' per vedere il numero dei libri di un dato autore;";
+
+        public UserInterface(Processor processor)
+        {
+            this.processor = processor;
+        }
+
         public void MainMenu()
         {
             Console.WriteLine(MENU_MESSAGE);
@@ -43,7 +50,7 @@ namespace LibraryManager
                     NumberOfAuthorBooks();
                     break;
                 default:
-                    Console.WriteLine("la lettera non è valida, ritenta");
+                    Console.WriteLine("La lettera non è valida, ritenta;");
                     break;
             }
             MainMenu();

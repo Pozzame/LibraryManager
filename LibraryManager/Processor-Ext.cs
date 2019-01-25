@@ -7,23 +7,27 @@ namespace LibraryManager
 {
     partial class Processor
     {
-        public bool AddAuthor(string firstName, string lastName)
+        public void AddAuthor()
         {
-            var author = new Author (firstName, lastName);
+            Console.WriteLine("First Name?");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Last Name?");
+            string lastName = Console.ReadLine();
+
+            var author = new Author { FirstName = firstName, LastName = lastName };
 
             using (var context = new LibraryContext())
             {
-                context.Add(author);
-
                 try
                 {
+                    context.Add(author);
                     context.SaveChanges();
                 }
                 catch (DbUpdateException)
                 {
-                    return false;
+                    Console.WriteLine("Insert error.");
                 }
-                return true;
+                Console.WriteLine("Insert ok.");
             }
         }
 

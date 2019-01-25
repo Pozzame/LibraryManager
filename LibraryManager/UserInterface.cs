@@ -35,16 +35,7 @@ namespace LibraryManager
                     ShowBooksByAuthor();
                     break;
                 case 'a':
-                    Console.WriteLine("First Name?");
-                    string firstName = Console.ReadLine();
-                    Console.WriteLine("Last Name?");
-                    string lastName = Console.ReadLine();
-
-                    if (processor.AddAuthor(firstName, lastName))
-                        Console.WriteLine("Insert ok.");
-                    else
-                        Console.WriteLine("Insert error.");
-
+                    AddAuthor();
                     break;
                 case 'b':
                     AddBook();
@@ -77,7 +68,7 @@ namespace LibraryManager
 
         private void AddAuthor()
         {
-            throw new NotImplementedException();
+            processor.AddAuthor();
         }
 
         private void AddBook()

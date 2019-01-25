@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+
 namespace EFLibraryManager
 {
     public class Author

@@ -8,13 +8,13 @@ namespace LibraryManager
     {
         private Processor processor;
         const string MENU_MESSAGE = @"Inserisci:
-                                        \n'S' per mostrare tutti i libri;
-                                        \n'M' per mostrare i libri di un dato autore;
-                                        \n'A' per aggiungere un autore;
-                                        \n'B' per aggiungere un libro;
-                                        \n'R' per rimuovere un autore o un libro;
-                                        \n'C' per mostrare i libri di una data categoria;
-                                        \n'N' per vedere il numero dei libri di un dato autore;";
+                                        'S' per mostrare tutti i libri;
+                                        'M' per mostrare i libri di un dato autore;
+                                        'A' per aggiungere un autore;
+                                        'B' per aggiungere un libro;
+                                        'R' per rimuovere un autore o un libro;
+                                        'C' per mostrare i libri di una data categoria;
+                                        'N' per vedere il numero dei libri di un dato autore;";
 
         public UserInterface(Processor processor)
         {
@@ -83,12 +83,12 @@ namespace LibraryManager
 
         private void ShowByCategory()
         {
-            throw new NotImplementedException();
+            processor.ShowByCategory();
         }
 
         private void NumberOfAuthorBooks()
         {
-            throw new NotImplementedException();
+            processor.NumberOfAuthorBooks();
         }
 
         private string ReadAnswer(string prompt = "")

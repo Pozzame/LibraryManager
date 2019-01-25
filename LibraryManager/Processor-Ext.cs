@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace LibraryManager
 {
@@ -14,7 +15,7 @@ namespace LibraryManager
             Console.WriteLine("Last Name?");
             string lastName = Console.ReadLine();
 
-            var author = new Author { FirstName = firstName, LastName = lastName };
+            Author author = new Author { FirstName = firstName, LastName = lastName };
 
             using (var context = new LibraryContext())
             {
@@ -33,12 +34,29 @@ namespace LibraryManager
 
         public void ShowByCategory()
         {
+            Console.WriteLine("Category?");
+            string category = Console.ReadLine();
 
+
+            using (var context = new LibraryContext())
+            {
+                List<Book> books = context.Books.Where(b => b.Category == category).ToList<Book>();
+                foreach (Book item in books)
+                {
+                    Console.WriteLine(item.Title);
+                }
+            }
         }
 
         public void NumberOfAuthorBooks()
         {
+            Console.WriteLine("AuthorID?");
+            int authorID = Convert.ToInt32(Console.ReadLine());
 
+            using (var context = new LibraryContext())
+            {
+               Console.WriteLine(context.Books.Where(a => a.AuthorId == authorID).Count());
+            }
         }
     }
 }

@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace EFLibraryManager
+namespace LibraryManager
 {
-    public class EFLibraryContext : DbContext
+    public class LibraryContext : DbContext
     {
         public DbSet<Book> Books {get; set;}
         public DbSet<Author> Authors {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;
-                                            Initial Catalog=EFLibraryManager;
+            optionsBuilder.UseSqlServer(@"Data Source=ALLIEVO9;
+                                            Initial Catalog=LibraryManager;
                                             Integrated Security=True;
                                             MultipleActiveResultSets=true");
         }

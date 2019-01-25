@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace EFLibraryManager
+namespace LibraryManager
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var UI = new UserInterface(new Processor());
+            UI.MainMenu();
         }
     }
 }

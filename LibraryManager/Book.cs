@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace EFLibraryManager
+namespace LibraryManager
 {
     public class Book
     {

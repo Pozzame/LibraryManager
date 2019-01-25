@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace EFLibraryManager
+namespace LibraryManager
 {
     public class Author
     {
@@ -11,5 +11,18 @@ namespace EFLibraryManager
         [StringLength(75)]
         public string LastName { get; set; }
         public ICollection<Book> Books {get; set;} = new List<Book>();
+
+        public Author(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
+        public Author(string firstName, string lastName, ICollection<Book> books)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Books = books;
+        }
     }
 }

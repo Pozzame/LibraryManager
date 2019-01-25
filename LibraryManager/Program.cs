@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LibraryManager
+namespace EFLibraryManager
 {
     class Program
     {

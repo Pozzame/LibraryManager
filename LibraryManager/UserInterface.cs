@@ -98,3 +98,5 @@ namespace LibraryManager
         }
     }
 }
+
+// Metodo() { using(var context = new EFLibraryContext) { ... } }

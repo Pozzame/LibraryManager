@@ -1,20 +1,22 @@
-﻿using System;
+﻿using LibraryManager;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LibraryManager
 {
     class UserInterface
     {
         private Processor processor;
-        const string MENU_MESSAGE = @"Inserisci:
-                                        'S' per mostrare tutti i libri;
-                                        'M' per mostrare i libri di un dato autore;
-                                        'A' per aggiungere un autore;
-                                        'B' per aggiungere un libro;
-                                        'R' per rimuovere un autore o un libro;
-                                        'C' per mostrare i libri di una data categoria;
-                                        'N' per vedere il numero dei libri di un dato autore;";
+        const string MENU_MESSAGE = "Inserisci:\n\n" +
+                                        "'S' per mostrare tutti i libri;\n" +
+                                        "'M' per mostrare i libri di un dato autore;\n" +
+                                        "'A' per aggiungere un autore;\n" +
+                                        "'B' per aggiungere un libro;\n" +
+                                        "'R' per rimuovere un autore o un libro;\n" +
+                                        "'C' per mostrare i libri di una data categoria;\n" +
+                                        "'N' per vedere il numero dei libri di un dato autore;\n" +
+                                        "'T' per mostrare in che magazzino si trova un libro;\n" +
+                                        "'Q' per uscire dal programma;\n";
 
         public UserInterface(Processor processor)
         {
@@ -49,6 +51,11 @@ namespace LibraryManager
                 case 'n':
                     NumberOfAuthorBooks();
                     break;
+                case 't':
+                    BookInStore();
+                    break;
+                case 'q':
+                    return;
                 default:
                     Console.WriteLine("La lettera non è valida, ritenta;");
                     break;
@@ -58,12 +65,12 @@ namespace LibraryManager
 
         private void ShowAllBooks()
         {
-            throw new NotImplementedException();
+            processor.ShowAllBooks();
         }
 
         private void ShowBooksByAuthor()
         {
-            throw new NotImplementedException();
+            processor.ShowBookByAuthor();
         }
 
         private void AddAuthor()
@@ -73,12 +80,27 @@ namespace LibraryManager
 
         private void AddBook()
         {
-            throw new NotImplementedException();
+            string input = ReadAnswer("Inserisci nome e cognome dell'autore: ");
+            processor.AddBook(input);
         }
 
         private void Remove()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Vuoi cancellare un libro (L) o un autore (A)?");
+            string input = ReadAnswer().ToLower();
+            switch(input[0])
+            {
+                case 'l':
+                    processor.RemoveBook();
+                    break;
+                case 'a':
+                    processor.RemoveAuthor();
+                    break;
+                default :
+                    Console.WriteLine("Inserimento non valido, ritenta");
+                    Remove();
+                    break;
+            }
         }
 
         private void ShowByCategory()
@@ -89,6 +111,11 @@ namespace LibraryManager
         private void NumberOfAuthorBooks()
         {
             processor.NumberOfAuthorBooks();
+        }
+
+        private void BookInStore()
+        {
+            processor.BookInStore();
         }
 
         private string ReadAnswer(string prompt = "")

@@ -8,9 +8,11 @@ namespace LibraryManager
     {
         public int BookId { get; set; }
         [StringLength(255)]
+        [ConcurrencyCheck]
         public string Title { get; set; }
         [StringLength(50)]
         public string Category { get; set; }
+        public int StoreId { get; set; }
         public int AuthorId { get; set; }
         public Author Author { get; set; }
     }

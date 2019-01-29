@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManager;
+using System;
 
 namespace LibraryManager
 {
@@ -6,7 +7,8 @@ namespace LibraryManager
     {
         static void Main(string[] args)
         {
-            var UI = new UserInterface(new Processor());
+            var proc = new Processor();
+            var UI = new UserInterface(proc);
             UI.MainMenu();
         }
     }

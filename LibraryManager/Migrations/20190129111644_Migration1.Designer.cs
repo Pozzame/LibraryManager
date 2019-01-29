@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManager.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190125104359_LimitString")]
-    partial class LimitString
+    [Migration("20190129111644_Migration1")]
+    partial class Migration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace LibraryManager.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EFLibraryManager.Author", b =>
+            modelBuilder.Entity("LibraryManager.Author", b =>
                 {
                     b.Property<int>("AuthorID")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace LibraryManager.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("EFLibraryManager.Book", b =>
+            modelBuilder.Entity("LibraryManager.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,13 @@ namespace LibraryManager.Migrations
 
                     b.Property<int>("AuthorId");
 
+                    b.Property<string>("Category")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("StoreId");
+
                     b.Property<string>("Title")
+                        .IsConcurrencyToken()
                         .HasMaxLength(255);
 
                     b.HasKey("BookId");
@@ -55,9 +61,22 @@ namespace LibraryManager.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("EFLibraryManager.Book", b =>
+            modelBuilder.Entity("LibraryManager.Store", b =>
                 {
-                    b.HasOne("EFLibraryManager.Author", "Author")
+                    b.Property<int>("StoreId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Location");
+
+                    b.HasKey("StoreId");
+
+                    b.ToTable("Stores");
+                });
+
+            modelBuilder.Entity("LibraryManager.Book", b =>
+                {
+                    b.HasOne("LibraryManager.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);

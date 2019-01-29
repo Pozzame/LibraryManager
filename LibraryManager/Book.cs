@@ -15,6 +15,8 @@ namespace LibraryManager
         public int StoreId { get; set; }
         public int AuthorId { get; set; }
         public Author Author { get; set; }
+        //[Timestamp]
+        //public byte[] Version { get; set; }
     }
 
 }
